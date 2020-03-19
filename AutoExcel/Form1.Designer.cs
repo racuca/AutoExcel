@@ -41,14 +41,14 @@
             this.cbChartType = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbShapeType = new System.Windows.Forms.ComboBox();
+            this.btnChangeColorShape = new System.Windows.Forms.Button();
+            this.btnAddTotalShapes = new System.Windows.Forms.Button();
             this.btnAddShape = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.btnAddTotalShapes = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnChangeColorShape = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -136,7 +136,7 @@
             this.groupBox1.Size = new System.Drawing.Size(415, 81);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "기본편집";
+            this.groupBox1.Text = "Basic Edit";
             // 
             // groupBox3
             // 
@@ -148,7 +148,7 @@
             this.groupBox3.Size = new System.Drawing.Size(415, 81);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Sheet 편집";
+            this.groupBox3.Text = "Sheet Edit";
             // 
             // groupBox2
             // 
@@ -159,7 +159,7 @@
             this.groupBox2.Size = new System.Drawing.Size(415, 100);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "차트 편집";
+            this.groupBox2.Text = "Chart";
             // 
             // cbChartType
             // 
@@ -189,7 +189,7 @@
             this.groupBox4.Size = new System.Drawing.Size(413, 101);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "도형 편집";
+            this.groupBox4.Text = "Features";
             // 
             // cbShapeType
             // 
@@ -210,6 +210,26 @@
             this.cbShapeType.Size = new System.Drawing.Size(136, 20);
             this.cbShapeType.TabIndex = 1;
             // 
+            // btnChangeColorShape
+            // 
+            this.btnChangeColorShape.Location = new System.Drawing.Point(17, 60);
+            this.btnChangeColorShape.Name = "btnChangeColorShape";
+            this.btnChangeColorShape.Size = new System.Drawing.Size(121, 22);
+            this.btnChangeColorShape.TabIndex = 0;
+            this.btnChangeColorShape.Text = "Change Color";
+            this.btnChangeColorShape.UseVisualStyleBackColor = true;
+            this.btnChangeColorShape.Click += new System.EventHandler(this.btnChangeColorShapes_Click);
+            // 
+            // btnAddTotalShapes
+            // 
+            this.btnAddTotalShapes.Location = new System.Drawing.Point(17, 32);
+            this.btnAddTotalShapes.Name = "btnAddTotalShapes";
+            this.btnAddTotalShapes.Size = new System.Drawing.Size(121, 22);
+            this.btnAddTotalShapes.TabIndex = 0;
+            this.btnAddTotalShapes.Text = "Add Total shapes";
+            this.btnAddTotalShapes.UseVisualStyleBackColor = true;
+            this.btnAddTotalShapes.Click += new System.EventHandler(this.btnAddTotalShapes_Click);
+            // 
             // btnAddShape
             // 
             this.btnAddShape.Location = new System.Drawing.Point(164, 32);
@@ -228,44 +248,7 @@
             this.groupBox5.Size = new System.Drawing.Size(424, 81);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "이미지 편집";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Location = new System.Drawing.Point(433, 110);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(424, 81);
-            this.groupBox6.TabIndex = 5;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "데이터 필터 틀 고정";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Location = new System.Drawing.Point(433, 211);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(424, 100);
-            this.groupBox7.TabIndex = 5;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "수식 편집";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Location = new System.Drawing.Point(433, 328);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(424, 100);
-            this.groupBox8.TabIndex = 5;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "기타 편집";
-            // 
-            // btnAddTotalShapes
-            // 
-            this.btnAddTotalShapes.Location = new System.Drawing.Point(17, 32);
-            this.btnAddTotalShapes.Name = "btnAddTotalShapes";
-            this.btnAddTotalShapes.Size = new System.Drawing.Size(121, 22);
-            this.btnAddTotalShapes.TabIndex = 0;
-            this.btnAddTotalShapes.Text = "Add Total shapes";
-            this.btnAddTotalShapes.UseVisualStyleBackColor = true;
-            this.btnAddTotalShapes.Click += new System.EventHandler(this.btnAddTotalShapes_Click);
+            this.groupBox5.Text = "Images";
             // 
             // button1
             // 
@@ -276,15 +259,32 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnChangeColorShape
+            // groupBox6
             // 
-            this.btnChangeColorShape.Location = new System.Drawing.Point(17, 60);
-            this.btnChangeColorShape.Name = "btnChangeColorShape";
-            this.btnChangeColorShape.Size = new System.Drawing.Size(121, 22);
-            this.btnChangeColorShape.TabIndex = 0;
-            this.btnChangeColorShape.Text = "Change Color";
-            this.btnChangeColorShape.UseVisualStyleBackColor = true;
-            this.btnChangeColorShape.Click += new System.EventHandler(this.btnChangeColorShapes_Click);
+            this.groupBox6.Location = new System.Drawing.Point(433, 110);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(424, 81);
+            this.groupBox6.TabIndex = 5;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Data Filter";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Location = new System.Drawing.Point(433, 211);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(424, 100);
+            this.groupBox7.TabIndex = 5;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Mathematics";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Location = new System.Drawing.Point(433, 328);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(424, 100);
+            this.groupBox8.TabIndex = 5;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Mic";
             // 
             // Form1
             // 
