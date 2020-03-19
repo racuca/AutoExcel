@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoExcel", "AutoExcel\AutoExcel.csproj", "{C4EFE658-E67F-410F-8586-10A56666E366}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoExcel.Core", "AutoExcel.Core\AutoExcel.Core.csproj", "{4B16CEF2-025D-4ABB-B099-122F6C905314}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelRefer", "ExcelRefer\ExcelRefer.csproj", "{1C6338AD-F053-44F2-B2B7-7B9F1F19CF52}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AutoExceVB", "AutoExceVB\AutoExceVB.vbproj", "{94CC122A-2C81-4BB0-9B9A-63B7B8A94317}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoExcel.Shapes", "AutoExcel.Shapes\AutoExcel.Shapes.csproj", "{B6CE5462-FED8-45D9-B2BE-ED335436E8E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4EFE658-E67F-410F-8586-10A56666E366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4EFE658-E67F-410F-8586-10A56666E366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4EFE658-E67F-410F-8586-10A56666E366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4EFE658-E67F-410F-8586-10A56666E366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B16CEF2-025D-4ABB-B099-122F6C905314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B16CEF2-025D-4ABB-B099-122F6C905314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B16CEF2-025D-4ABB-B099-122F6C905314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B16CEF2-025D-4ABB-B099-122F6C905314}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C6338AD-F053-44F2-B2B7-7B9F1F19CF52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C6338AD-F053-44F2-B2B7-7B9F1F19CF52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C6338AD-F053-44F2-B2B7-7B9F1F19CF52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C6338AD-F053-44F2-B2B7-7B9F1F19CF52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94CC122A-2C81-4BB0-9B9A-63B7B8A94317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94CC122A-2C81-4BB0-9B9A-63B7B8A94317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94CC122A-2C81-4BB0-9B9A-63B7B8A94317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94CC122A-2C81-4BB0-9B9A-63B7B8A94317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6CE5462-FED8-45D9-B2BE-ED335436E8E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6CE5462-FED8-45D9-B2BE-ED335436E8E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6CE5462-FED8-45D9-B2BE-ED335436E8E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6CE5462-FED8-45D9-B2BE-ED335436E8E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

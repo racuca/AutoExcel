@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Excel = Microsoft.Office.Interop.Excel;
+
+namespace ExcelRefer
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ChartExam ce = new ChartExam();
+            ShapeExam ce = new ShapeExam();
+        }       
+    }
+}

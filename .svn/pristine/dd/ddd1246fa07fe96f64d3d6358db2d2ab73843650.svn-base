@@ -1,0 +1,308 @@
+﻿using AutoExcel.Core;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
+
+namespace AutoExcel
+{
+    public partial class Form1 : Form
+    {
+
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            foreach (string s in Shapes.ShapeDefine.ShapeTypes)
+            {
+                cbShapeType.Items.Add(s);
+            }
+
+
+            cbChartType.SelectedIndex = 0;
+            cbShapeType.SelectedIndex = 0;
+        }
+
+        private void btnHelloWorld_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ExcelBinder excelbinder = new ExcelBinder();
+                excelbinder.NewDocument();
+
+                excelbinder.Visible = true;
+
+                excelbinder.SetValue("A1", "Hello world");
+
+                excelbinder.SaveDocument(Path.Combine(Environment.CurrentDirectory, "testhello1.xlsx"));
+
+                excelbinder.CloseDocument();
+
+                excelbinder.QuitDocument();
+            }
+            catch (Exception excel)
+            {
+                MessageBox.Show(excel.Message.ToString());
+            }
+        }
+
+        private void btnInsertImage_Click(object sender, EventArgs e)
+        {
+            ExcelBinder excelbinder = new ExcelBinder();
+            excelbinder.NewDocument();
+
+            excelbinder.Visible = true;
+
+            excelbinder.InsertImage(Path.Combine(Environment.CurrentDirectory, "tent1.jpg"), 1, 1, 200, 200);
+
+            excelbinder.InsertImage(Path.Combine(Environment.CurrentDirectory, "tent1.jpg"), 200, 200);
+
+            excelbinder.SaveDocument(Path.Combine(Environment.CurrentDirectory, "testimage.xlsx"));
+
+            excelbinder.CloseDocument();
+
+            excelbinder.QuitDocument();
+        }
+
+        private void btnFillColor_Click(object sender, EventArgs e)
+        {
+            ExcelBinder excelbinder = new ExcelBinder();
+            excelbinder.NewDocument();
+
+            excelbinder.Visible = true;
+
+            excelbinder.SetColor("A1:B2", (int)enumRgbColor.rgbRed);
+            excelbinder.SetColor("A2", (int)enumRgbColor.rgbBlue);
+            excelbinder.SetColor("A3", (int)enumRgbColor.rgbGreen);
+
+            excelbinder.SaveDocument(Path.Combine(Environment.CurrentDirectory, "testcolor.xlsx"));
+
+            excelbinder.CloseDocument();
+
+            excelbinder.QuitDocument();
+        }
+
+        private void btnnewSheet_Click(object sender, EventArgs e)
+        {
+            ExcelBinder excelbinder = new ExcelBinder();
+            excelbinder.NewDocument();
+
+            excelbinder.Visible = true;
+
+            excelbinder.AddNewSheet("Test1");
+            excelbinder.SetValue("A1", "test1");
+
+            excelbinder.AddNewSheet("Test2");
+            excelbinder.SetValue("A1", "test2");
+
+            excelbinder.SaveDocument(Path.Combine(Environment.CurrentDirectory, "testnewsheet.xlsx"));
+
+            excelbinder.CloseDocument();
+
+            excelbinder.QuitDocument();
+        }
+
+
+        private void btnRenameSheet_Click(object sender, EventArgs e)
+        {
+            ExcelBinder excelbinder = new ExcelBinder();
+            excelbinder.OpenDocument(Path.Combine(Environment.CurrentDirectory, "testnewsheet.xlsx"));
+            
+            excelbinder.Visible = true;
+
+            excelbinder.RenameSheet(4, "RenameTest1");
+
+            excelbinder.SaveDocument(Path.Combine(Environment.CurrentDirectory, "testnewsheet.xlsx"));
+
+            excelbinder.CloseDocument();
+
+            excelbinder.QuitDocument();
+        }
+
+
+        private void btnCopySheet_Click(object sender, EventArgs e)
+        {
+            ExcelBinder excelbinder = new ExcelBinder();
+            excelbinder.NewDocument();
+            
+            excelbinder.Visible = true;
+
+            excelbinder.RenameSheet(3, "RenameTest1");
+            excelbinder.SetActiveWorkSheet(3);
+            excelbinder.SetValue("A1", "Renamed Test Sheet");
+
+            excelbinder.sheetCopy("RenameTest1", "CopyedTest2");
+            excelbinder.SetActiveWorkSheet("CopyedTest2");
+            excelbinder.SetValue("A1", "Copyed Test Sheet");
+
+            excelbinder.SaveAsDocument(Path.Combine(Environment.CurrentDirectory, "testcopyheet.xls"));
+
+            excelbinder.CloseDocument();
+
+            excelbinder.QuitDocument();
+        }
+
+
+        private void btnnewChart_Click(object sender, EventArgs e)
+        {
+            ExcelBinder excelbinder = new ExcelBinder();
+            excelbinder.NewDocument();
+
+            excelbinder.Visible = true;
+
+            excelbinder.SetActiveWorkSheet(1);
+
+            excelbinder.SetValue(1, 2, "Student1");
+            excelbinder.SetValue(1, 3, "Student2");
+            excelbinder.SetValue(1, 4, "Student3");
+
+            excelbinder.SetValue(2, 1, "Term1");
+            excelbinder.SetValue(2, 2, "80");
+            excelbinder.SetValue(2, 3, "65");
+            excelbinder.SetValue(2, 4, "45");
+
+            excelbinder.SetValue(3, 1, "Term2");
+            excelbinder.SetValue(3, 2, "78");
+            excelbinder.SetValue(3, 3, "72");
+            excelbinder.SetValue(3, 4, "60");
+
+            excelbinder.SetValue(4, 1, "Term3");
+            excelbinder.SetValue(4, 2, "82");
+            excelbinder.SetValue(4, 3, "80");
+            excelbinder.SetValue(4, 4, "65");
+
+            excelbinder.SetValue(5, 1, "Term4");
+            excelbinder.SetValue(5, 2, "75");
+            excelbinder.SetValue(5, 3, "82");
+            excelbinder.SetValue(5, 4, "68");
+
+            ExcelBinder.ExlChartType ctype = GetChartType(cbChartType.SelectedIndex);
+            excelbinder.CreateChart(1, 1, 5, 4, 100, 100, 400, 400, ctype);
+
+            excelbinder.SaveDocument(Path.Combine(Environment.CurrentDirectory, "testchart" + (int)ctype + ".xlsx"));
+
+            excelbinder.CloseDocument();
+
+            excelbinder.QuitDocument();
+
+        }
+
+        private void btnAddShape_Click(object sender, EventArgs e)
+        {
+            ExcelBinder excelbinder = new ExcelBinder();
+            excelbinder.NewDocument();
+
+            excelbinder.Visible = true;
+
+            excelbinder.SetActiveWorkSheet(1);
+
+            Shapes.ShapeDefine.MsoShapeType stype = GetShapeType(cbShapeType.SelectedIndex);
+            excelbinder.InsertShapes(stype, 100, 100, 150, 20);
+            
+            excelbinder.SaveDocument(Path.Combine(Environment.CurrentDirectory, "testshapes" + (int)stype + ".xlsx"));
+
+            excelbinder.CloseDocument();
+
+            excelbinder.QuitDocument();
+        }
+
+
+        private void btnAddTotalShapes_Click(object sender, EventArgs e)
+        {
+            ExcelBinder excelbinder = new ExcelBinder();
+            excelbinder.NewDocument();
+
+            excelbinder.Visible = true;
+
+            excelbinder.SetActiveWorkSheet(1);
+
+            int Left = 10;
+            int Top = 10;
+            excelbinder.InsertShapes(Shapes.ShapeDefine.MsoShapeType.msoShapeLineCallout1, Left, Top, 100, 20);
+            excelbinder.InsertShapes(Shapes.ShapeDefine.MsoShapeType.msoShapeRectangle, Left + 120, Top, 100, 20);
+            excelbinder.InsertShapes(Shapes.ShapeDefine.MsoShapeType.msoShapeRightArrow, Left + 220, Top, 100, 20);
+            excelbinder.InsertShapes(Shapes.ShapeDefine.MsoShapeType.msoShapeLeftArrow, Left + 320, Top, 100, 20);
+            excelbinder.InsertShapes(Shapes.ShapeDefine.MsoShapeType.msoShapeLeftRightArrow, Left + 420, Top, 100, 20);
+            excelbinder.InsertShapes(Shapes.ShapeDefine.MsoShapeType.msoShapeUpArrow, Left + 520, Top, 100, 20);
+            excelbinder.InsertShapes(Shapes.ShapeDefine.MsoShapeType.msoShapeRightTriangle, Left, Top + 150, 150, 150);
+            excelbinder.InsertShapes(Shapes.ShapeDefine.MsoShapeType.msoShapeOctagon, Left + 200, Top + 150, 150, 150);
+            excelbinder.InsertShapes(Shapes.ShapeDefine.MsoShapeType.msoShapeOval, Left + 400, Top + 150, 150, 150);
+
+            excelbinder.SaveDocument(Path.Combine(Environment.CurrentDirectory, "testshapes.xlsx"));
+
+            excelbinder.CloseDocument();
+
+            excelbinder.QuitDocument();
+        }
+
+
+        private void btnChangeColorShapes_Click(object sender, EventArgs e)
+        {
+            string filename = Path.Combine(Environment.CurrentDirectory, "testshapes.xlsx");
+            if (File.Exists(filename))
+            {
+                ExcelBinder excelbinder = new ExcelBinder();
+                excelbinder.OpenDocument(filename);
+                excelbinder.Visible = true;
+
+                excelbinder.SetActiveWorkSheet(1);
+
+
+                excelbinder.ChangeColorObjects(Color.Red);
+            }
+        }
+
+        /*
+        Bubble
+        Cluster
+        Pie
+        ScatterLine
+        3D Surface
+        3D Cone Column
+        3D Pyramid Column
+        */
+        ExcelBinder.ExlChartType GetChartType(int idx)
+        {
+            ExcelBinder.ExlChartType t = ExcelBinder.ExlChartType.xlBubble;
+            switch (idx)
+            {
+                case 0: return ExcelBinder.ExlChartType.xlBubble;
+                case 1: return ExcelBinder.ExlChartType.xlBarClustered;
+                case 2: return ExcelBinder.ExlChartType.xlPie;
+                case 3: return ExcelBinder.ExlChartType.xlXYScatterLines;
+                case 4: return ExcelBinder.ExlChartType.xlSurface;
+                case 5: return ExcelBinder.ExlChartType.xlConeCol;
+                case 6: return ExcelBinder.ExlChartType.xlPyramidCol;
+                default: return ExcelBinder.ExlChartType.xlBubble;
+            }
+
+            return t;
+        }
+
+
+        Shapes.ShapeDefine.MsoShapeType GetShapeType(int idx)
+        {
+            Shapes.ShapeDefine.MsoShapeType t = Shapes.ShapeDefine.MsoShapeType.msoShapeRectangle;
+            switch (idx)
+            {
+                case 0: return Shapes.ShapeDefine.MsoShapeType.msoShapeLineCallout1;
+                case 1: return Shapes.ShapeDefine.MsoShapeType.msoShapeRectangle;
+                case 2: return Shapes.ShapeDefine.MsoShapeType.msoShapeRightArrow;
+                case 3: return Shapes.ShapeDefine.MsoShapeType.msoShapeLeftArrow;
+                case 4: return Shapes.ShapeDefine.MsoShapeType.msoShapeLeftRightArrow;
+                case 5: return Shapes.ShapeDefine.MsoShapeType.msoShapeUpArrow;
+                case 6: return Shapes.ShapeDefine.MsoShapeType.msoShapeRightTriangle;
+                case 7: return Shapes.ShapeDefine.MsoShapeType.msoShapeOctagon;
+                default: return Shapes.ShapeDefine.MsoShapeType.msoShapeOval;
+            }
+
+            return t;
+        }
+
+    }
+}
