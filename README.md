@@ -1,4 +1,4 @@
-# AutoExcel
+# AutoExcel - Excel Automation
 
 AutoExcel is a late binding Excel Automation library for making MS excel files without version dependent COM.
 
